@@ -1,26 +1,23 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --white: #ffffff;
+    --black: #101011;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+    --font-major: var(--font-major), monospace;
+    --font-vt: var(--font-vt), monospace;
+
+    --breakpoint-*: initial;
+
+    --color-*: initial;
+    --color-white: var(--white);
+    --color-black: var(--black);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@custom-variant 1920 (@media (max-width: 120rem));
+@custom-variant 1600 (@media (max-width: 100rem));
+@custom-variant 1024 (@media (max-width: 64rem));
+@custom-variant 768 (@media (max-width: 48rem));
+@custom-variant 480 (@media (max-width: 30rem));
