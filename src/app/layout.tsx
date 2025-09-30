@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Major_Mono_Display, VT323 } from 'next/font/google'
+import { Major_Mono_Display, VT323, Bungee_Hairline } from 'next/font/google'
 import './globals.css'
 
-const majorMono = Major_Mono_Display({
+const majorMono = Bungee_Hairline({
     weight: '400',
     variable: '--font-major',
 })
@@ -22,7 +22,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className="bg-black">
             <body
                 className={`${majorMono.variable} ${vt323.variable} antialiased bg-black w-dvw h-dvh`}
             >
