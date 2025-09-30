@@ -7,7 +7,7 @@
 
 @theme {
     --font-major: var(--font-major), monospace;
-    --font-vt: var(--font-vt), monospace;
+    --font-raleway: var(--font-raleway), monospace;
 
     --breakpoint-*: initial;
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Major_Mono_Display, VT323, Bungee_Hairline } from 'next/font/google'
+import { Bungee_Hairline, Raleway } from 'next/font/google'
 import './globals.css'
 
 const majorMono = Bungee_Hairline({
@@ -7,9 +7,9 @@ const majorMono = Bungee_Hairline({
     variable: '--font-major',
 })
 
-const vt323 = VT323({
-    weight: '400',
-    variable: '--font-vt',
+const raleway = Raleway({
+    weight: '200',
+    variable: '--font-raleway',
 })
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
     return (
         <html lang="en" className="bg-black">
             <body
-                className={`${majorMono.variable} ${vt323.variable} antialiased bg-black w-dvw h-dvh`}
+                className={`${majorMono.variable} ${raleway.variable} antialiased bg-black w-dvw h-dvh`}
             >
                 {children}
             </body>

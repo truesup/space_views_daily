@@ -1,14 +1,11 @@
-'use client'
-
 import { MoveRight, ChevronDown } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { useGlobalStore } from '@/store/store'
+import { useGlobalStore } from '@/zustand/store'
 import DecryptedText from '@/components/ui/DecryptedText'
 
 interface GreetingScreenProps {}
 
 export default function GreetingScren({}: GreetingScreenProps) {
-    const selectedScreen = useGlobalStore(store => store.selectedScreen)
     const goToNextScreen = useGlobalStore(store => store.goToNext)
 
     const [windowWidth, setWindowWidth] = useState<number>(0)
@@ -20,30 +17,26 @@ export default function GreetingScren({}: GreetingScreenProps) {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    useEffect(() => {
-        console.log('me selected: ', selectedScreen)
-    }, [selectedScreen])
-
     return (
         <div className="flex items-center justify-center gap-6 1920:gap-4 1600:gap-3.5 1200:gap-3">
             {windowWidth > 1024 ? (
                 <>
                     <DecryptedText
                         text="explore the universe"
-                        speed={90}
+                        speed={120}
                         maxIterations={70}
                         sequential={true}
                         revealDirection="start"
-                        useOriginalCharsOnly={false}
+                        useOriginalCharsOnly={true}
                         animateOn="view"
-                        parentClassName="animate-fadeIn bg-transparent"
+                        parentClassName="bg-transparent"
                         className="text-[80px] font-major text-white uppercase shadow-text-stroke 1920:text-[76px] 1600:text-[70px] 1200:text-[56px]"
                         encryptedClassName="text-[80px] font-major text-white uppercase shadow-text-stroke 1920:text-[74px] 1600:text-[70px] 1200:text-[56px]"
                     />
 
                     <button
                         type="button"
-                        className="opacity-0 h-[64px] aspect-square text-white rounded-full flex items-center justify-center cursor-pointer animate-fadeInAndSlideLeft [animation-delay:2s] hover:bg-white hover:text-black transition-all duration-300 1600:h-[60px] 1200:h-[52px]"
+                        className="opacity-0 h-[64px] aspect-square text-white rounded-full flex items-center justify-center cursor-pointer animate-fadeInAndSlideLeft [animation-delay:2.6s] hover:bg-white hover:text-black transition-all duration-300 1600:h-[60px] 1200:h-[52px]"
                         onClick={goToNextScreen}
                     >
                         <MoveRight

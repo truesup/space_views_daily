@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useState, useRef } from 'react'
 import { motion, HTMLMotionProps } from 'motion/react'
 
@@ -24,7 +22,7 @@ export default function DecryptedText({
     sequential = false,
     revealDirection = 'start',
     useOriginalCharsOnly = false,
-    characters = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+',
+    characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#%+',
     className = '',
     parentClassName = '',
     encryptedClassName = '',
