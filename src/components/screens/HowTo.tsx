@@ -79,7 +79,7 @@ export default function HowToScreen({}: HowToScreenProps) {
 
                         <motion.button
                             layout
-                            className="mt-4 p-3 border border-white rounded-full text-white font-raleway text-[20px]"
+                            className="mt-4 p-3 border border-white rounded-full text-white font-raleway text-[20px] cursor-pointer hover:bg-white hover:text-black transition-colors duration-300"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{
