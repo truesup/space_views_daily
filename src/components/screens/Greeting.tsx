@@ -1,4 +1,4 @@
-import { MoveRight, ChevronDown } from 'lucide-react'
+import { MoveRight, ChevronDown, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useGlobalStore } from '@/zustand/store'
 import DecryptedText from '@/components/ui/DecryptedText'
@@ -18,7 +18,7 @@ export default function GreetingScren({}: GreetingScreenProps) {
     }, [])
 
     return (
-        <div className="flex items-center justify-center gap-6 1920:gap-4 1600:gap-3.5 1200:gap-3">
+        <div className="flex items-center justify-center gap-6 1920:gap-8 1600:gap-6 1200:gap-5">
             {windowWidth > 1024 ? (
                 <>
                     <DecryptedText
@@ -36,10 +36,10 @@ export default function GreetingScren({}: GreetingScreenProps) {
 
                     <button
                         type="button"
-                        className="opacity-0 h-[64px] aspect-square text-white rounded-full flex items-center justify-center cursor-pointer animate-fadeInAndSlideLeft [animation-delay:2.6s] hover:bg-white hover:text-black transition-all duration-300 1600:h-[60px] 1200:h-[52px]"
+                        className="opacity-0 h-[64px] aspect-square text-white border border-white rounded-full flex items-center justify-center cursor-pointer animate-fadeInAndSlideLeft [animation-delay:2.6s] hover:bg-white hover:text-black transition-all duration-300 1600:h-[60px] 1200:h-[52px]"
                         onClick={goToNextScreen}
                     >
-                        <MoveRight
+                        <ChevronRight
                             color="currentColor"
                             className="size-12 1920:size-10 1600:size-9 1200:size-8"
                             strokeWidth={1}

@@ -18,7 +18,7 @@ export default function HomePage() {
                 particleCount={1500}
                 particleSpread={36}
                 speed={0.04}
-                particleBaseSize={98}
+                particleBaseSize={105}
                 moveParticlesOnHover={false}
                 alphaParticles={false}
                 disableRotation={false}

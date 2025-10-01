@@ -25,7 +25,7 @@ export const useGlobalStore = create<GlobalState>((set, get) => ({
                     isLoading: false,
                     selectedScreen: navigationScreens[currentIndex + 1],
                 })
-            }, 3500)
+            }, 3000)
         }
     },
 
