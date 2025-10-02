@@ -15,7 +15,7 @@ export default function HowToScreen({}: HowToScreenProps) {
     return (
         <LayoutGroup>
             <motion.div
-                className="px-[200px] w-full flex flex-col items-center justify-center gap-20 1920:px-[132px] 1600:px-[104px] 1600:gap-18"
+                className="w-full flex flex-col items-center justify-center gap-20 1920:gap-16 1600:gap-14 1440:gap-12"
                 layout
                 transition={{
                     layout: { duration: 1, ease: easeInOut, type: 'tween' },
@@ -26,7 +26,7 @@ export default function HowToScreen({}: HowToScreenProps) {
                     transition={{
                         layout: { duration: 1, ease: easeInOut, type: 'tween' },
                     }}
-                    className="font-major text-white text-[70px] shadow-text-stroke uppercase 1920:text-[64px] 1600:text-[58px]"
+                    className="font-major text-white text-[70px] text-center shadow-text-stroke uppercase 1920:text-[64px] 1600:text-[58px] 1440:text-[52px]"
                 >
                     How does this app actually work?
                 </motion.h2>
@@ -35,7 +35,7 @@ export default function HowToScreen({}: HowToScreenProps) {
                     <>
                         <motion.div
                             layout
-                            className="w-full flex items-center justify-evenly"
+                            className="w-full flex items-center justify-center gap-60 1920:gap-46 1600:gap-32 1440:gap-22"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, ease: easeInOut }}

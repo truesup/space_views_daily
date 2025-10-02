@@ -17,15 +17,11 @@
 
     --animate-fadeIn: fadeIn 0.3s ease-in-out forwards;
     --animate-fadeInAndSlideLeft: fadeInAndSlideLeft 1s ease-in-out forwards;
-    --animate-fadeInAndSlideUp: fadeInAndSlideUp 1s ease-in-out forwards;
 }
 
 @custom-variant 1920 (@media (max-width: 120rem));
 @custom-variant 1600 (@media (max-width: 100rem));
-@custom-variant 1200 (@media (max-width: 75rem));
-@custom-variant 1024 (@media (max-width: 64rem));
-@custom-variant 768 (@media (max-width: 48rem));
-@custom-variant 480 (@media (max-width: 30rem));
+@custom-variant 1440 (@media (max-width: 90rem));
 
 @keyframes fadeIn {
     0% {
@@ -42,15 +38,6 @@
     100% {
         opacity: 1;
         transform: translateX(0);
-    }
-}
-@keyframes fadeInAndSlideUp {
-    0% {
-        transform: translateY(60px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
