@@ -15,7 +15,7 @@
     --color-white: var(--white);
     --color-black: var(--black);
 
-    --animate-fadeIn: fadeIn 0.3s ease-in-out forwards;
+    --animate-fadeIn: fadeIn 1s ease-in-out forwards;
     --animate-fadeInAndSlideLeft: fadeInAndSlideLeft 1s ease-in-out forwards;
 }
 

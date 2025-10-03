@@ -1,14 +1,17 @@
-import { easeInOut, motion, LayoutGroup } from 'framer-motion'
-import { Sparkles, Cable, Wallpaper, ChevronDown } from 'lucide-react'
+import { motion, LayoutGroup } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useGlobalStore } from '@/zustand/store'
+import ExplanationItemsBlock from '@/components/ui/ExplanationItemsBlock'
+import ChevronButton from '@/components/ui/ChevronButton'
 
-interface HowToScreenProps {}
+export default function HowToScreen() {
+    const goToNextScreen = useGlobalStore(store => store.goToNext)
 
-export default function HowToScreen({}: HowToScreenProps) {
     const [isContentShown, setIsContentShown] = useState<boolean>(false)
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsContentShown(true), 3000)
+        const timer = window.setTimeout(() => setIsContentShown(true), 3000)
         return () => clearTimeout(timer)
     }, [])
 
@@ -18,13 +21,17 @@ export default function HowToScreen({}: HowToScreenProps) {
                 className="w-full flex flex-col items-center justify-center gap-20 1920:gap-16 1600:gap-14 1440:gap-12"
                 layout
                 transition={{
-                    layout: { duration: 1, ease: easeInOut, type: 'tween' },
+                    layout: { duration: 1, ease: 'easeInOut', type: 'tween' },
                 }}
             >
                 <motion.h2
                     layout
                     transition={{
-                        layout: { duration: 1, ease: easeInOut, type: 'tween' },
+                        layout: {
+                            duration: 1,
+                            ease: 'easeInOut',
+                            type: 'tween',
+                        },
                     }}
                     className="font-major text-white text-[70px] text-center shadow-text-stroke uppercase 1920:text-[64px] 1600:text-[58px] 1440:text-[52px]"
                 >
@@ -35,65 +42,21 @@ export default function HowToScreen({}: HowToScreenProps) {
                     <>
                         <motion.div
                             layout
-                            className="w-full flex items-center justify-center gap-60 1920:gap-46 1600:gap-32 1440:gap-22"
+                            className="w-full flex flex-col items-center justify-center gap-20 1920:gap-16 1600:gap-14 1440:gap-12"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 1, ease: easeInOut }}
+                            transition={{ duration: 1, ease: 'easeInOut' }}
                         >
-                            <div className="flex flex-col items-center justify-center gap-5 max-w-[320px]">
-                                <Sparkles
-                                    strokeWidth={0.2}
-                                    color="#fff"
-                                    width={220}
-                                    height={220}
-                                />
-                                <p className="font-raleway text-[24px] text-white text-center">
-                                    Every day NASA unveils a new portrait of the
-                                    stars.
-                                </p>
+                            <div className="flex items-center justify-center gap-60 1920:gap-46 1600:gap-32 1440:gap-22">
+                                <ExplanationItemsBlock />
                             </div>
-                            <div className="flex flex-col items-center justify-center gap-5 max-w-[320px]">
-                                <Cable
-                                    strokeWidth={0.2}
-                                    color="#fff"
-                                    width={220}
-                                    height={220}
-                                />
-                                <p className="font-raleway text-[24px] text-white text-center">
-                                    We connect directly to the cosmic archive.
-                                </p>
-                            </div>
-                            <div className="flex flex-col items-center justify-center gap-5 max-w-[320px]">
-                                <Wallpaper
-                                    strokeWidth={0.2}
-                                    color="#fff"
-                                    width={220}
-                                    height={220}
-                                />
-                                <p className="font-raleway text-[24px] text-white text-center">
-                                    You receive the picture and the insight it
-                                    carries.
-                                </p>
-                            </div>
-                        </motion.div>
 
-                        <motion.button
-                            layout
-                            className="mt-4 p-3 border border-white rounded-full text-white font-raleway text-[20px] cursor-pointer hover:bg-white hover:text-black transition-colors duration-300"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                                duration: 1,
-                                ease: easeInOut,
-                                delay: 3,
-                            }}
-                        >
-                            <ChevronDown
-                                color="currentColor"
-                                className="size-7 768:size-6 480:size-5"
-                                strokeWidth={1}
+                            <ChevronButton
+                                icon={ChevronDown}
+                                onClick={goToNextScreen}
+                                className="mt-9 opacity-0 animate-fadeIn [animation-delay:3s] 1920:mt-8 1600:mt-4 1440:mt-2"
                             />
-                        </motion.button>
+                        </motion.div>
                     </>
                 )}
             </motion.div>

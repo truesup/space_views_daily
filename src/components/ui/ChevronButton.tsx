@@ -1,0 +1,27 @@
+import { LucideIcon } from 'lucide-react'
+
+interface ChevronButtonProps {
+    className?: string
+    icon: LucideIcon
+    onClick: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export default function ChevronButton({
+    className,
+    icon: Icon,
+    onClick,
+}: ChevronButtonProps) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={`${className} p-3 text-white border border-white rounded-full flex items-center justify-center cursor-pointer hover:bg-white hover:text-black transition-all duration-300 1920:p-2.5 1440:p-2`}
+        >
+            <Icon
+                strokeWidth={1}
+                color="currentColor"
+                className="size-10 1600:size-8 1440:size-8"
+            />
+        </button>
+    )
+}

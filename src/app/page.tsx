@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, easeInOut, motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useGlobalStore } from '@/zustand/store'
 import { useState, useEffect } from 'react'
 import ParticlesBackground from '@/components/ui/ParticlesBackground'
@@ -79,7 +79,7 @@ export default function HomePage() {
                             animate={{ opacity: 1 }}
                             transition={{
                                 duration: 1,
-                                ease: easeInOut,
+                                ease: 'easeInOut',
                             }}
                         >
                             Unavailable
