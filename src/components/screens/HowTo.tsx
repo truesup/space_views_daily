@@ -52,6 +52,7 @@ export default function HowToScreen() {
                             </div>
 
                             <ChevronButton
+                                type="button"
                                 icon={ChevronDown}
                                 onClick={goToNextScreen}
                                 className="mt-9 opacity-0 animate-fadeIn [animation-delay:3s] 1920:mt-8 1600:mt-4 1440:mt-2"

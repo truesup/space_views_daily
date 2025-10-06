@@ -21,6 +21,7 @@ export default function GreetingScren() {
                 encryptedClassName="text-[80px] font-major text-white uppercase shadow-text-stroke 1920:text-[74px] 1600:text-[66px]"
             />
             <ChevronButton
+                type="button"
                 icon={ChevronRight}
                 onClick={goToNextScreen}
                 className="opacity-0 animate-fadeInAndSlideLeft [animation-delay:2.6s]"

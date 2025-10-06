@@ -7,6 +7,7 @@ import ParticlesBackground from '@/components/ui/ParticlesBackground'
 import LoadingScreen from '@/components/screens/Loading'
 import GreetingScreen from '@/components/screens/Greeting'
 import HowToScreen from '@/components/screens/HowTo'
+import DatePickScreen from '@/components/screens/DatePick'
 
 export default function HomePage() {
     const selectedScreen = useGlobalStore(store => store.selectedScreen)
@@ -67,6 +68,9 @@ export default function HomePage() {
                                     )}
                                     {selectedScreen === 'howTo' && (
                                         <HowToScreen />
+                                    )}
+                                    {selectedScreen === 'datePick' && (
+                                        <DatePickScreen />
                                     )}
                                 </motion.div>
                             )}

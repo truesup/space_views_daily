@@ -1,20 +1,18 @@
 import { LucideIcon } from 'lucide-react'
+import { ComponentPropsWithoutRef } from 'react'
 
-interface ChevronButtonProps {
-    className?: string
+interface ChevronButtonProps extends ComponentPropsWithoutRef<'button'> {
     icon: LucideIcon
-    onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export default function ChevronButton({
     className,
     icon: Icon,
-    onClick,
+    ...rest
 }: ChevronButtonProps) {
     return (
         <button
-            type="button"
-            onClick={onClick}
+            {...rest}
             className={`${className} p-3 text-white border border-white rounded-full flex items-center justify-center cursor-pointer hover:bg-white hover:text-black transition-all duration-300 1920:p-2.5 1440:p-2`}
         >
             <Icon
