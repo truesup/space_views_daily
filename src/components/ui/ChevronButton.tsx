@@ -6,13 +6,13 @@ interface ChevronButtonProps extends ComponentPropsWithoutRef<'button'> {
 }
 
 export default function ChevronButton({
-    className,
+    className = '',
     icon: Icon,
-    ...rest
+    ...nativeProps
 }: ChevronButtonProps) {
     return (
         <button
-            {...rest}
+            {...nativeProps}
             className={`${className} p-3 text-white border border-white rounded-full flex items-center justify-center cursor-pointer hover:bg-white hover:text-black transition-all duration-300 1920:p-2.5 1440:p-2`}
         >
             <Icon

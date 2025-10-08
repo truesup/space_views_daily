@@ -1,8 +1,6 @@
 import { Star } from 'lucide-react'
 
-interface LoadingScreenProps {}
-
-export default function LoadingScreen({}: LoadingScreenProps) {
+export default function LoadingScreen() {
     return (
         <div className="w-dvw flex items-center justify-center">
             <Star

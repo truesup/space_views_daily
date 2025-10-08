@@ -1,5 +1,6 @@
 import { motion, LayoutGroup } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import DateForm from '@/components/ui/DateForm'
 
 export default function DatePickScreen() {
     const [isContentShown, setIsContentShown] = useState<boolean>(false)
@@ -42,29 +43,15 @@ export default function DatePickScreen() {
                 </div>
 
                 {isContentShown && (
-                    <motion.form
+                    <motion.div
                         layout
-                        className="font-raleway text-white text-[30px] border-b border-white flex items-center justify-center"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, ease: 'easeInOut' }}
+                        className="flex items-center justify-center"
                     >
-                        <input
-                            type="text"
-                            placeholder="dd"
-                            className="text-inherit text-center border border-black border-b-0 rounded-tl-lg rounded-tr-lg focus:outline-0"
-                        />
-                        <input
-                            type="text"
-                            placeholder="mm"
-                            className="text-inherit text-center border border-black border-b-0 rounded-tl-lg rounded-tr-lg focus:outline-0"
-                        />
-                        <input
-                            type="text"
-                            placeholder="yyyy"
-                            className="text-inherit text-center border border-black border-b-0 rounded-tl-lg rounded-tr-lg focus:outline-0"
-                        />
-                    </motion.form>
+                        <DateForm />
+                    </motion.div>
                 )}
             </motion.div>
         </LayoutGroup>

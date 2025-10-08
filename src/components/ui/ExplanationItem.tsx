@@ -7,7 +7,7 @@ interface ExplanationItemProps {
 }
 
 export default function ExplanationItem({
-    className,
+    className = '',
     text,
     icon: Icon,
 }: ExplanationItemProps) {
