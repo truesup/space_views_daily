@@ -45,7 +45,7 @@ export const useGlobalStore = create<GlobalState>((set, get) => ({
                     isLoading: false,
                     selectedScreen: navigationScreens[currentIndex - 1],
                 })
-            }, 1200)
+            }, 3000)
         }
     },
 
@@ -59,13 +59,24 @@ export const useGlobalStore = create<GlobalState>((set, get) => ({
 
     fetchAPODData: async () => {
         const { selectedDate } = get()
-
         if (!selectedDate) return
 
         set({ isLoading: true, error: null })
 
+        const startTime = Date.now()
+
         try {
             const data = await fetchAPOD(selectedDate)
+
+            const elapsed = Date.now() - startTime
+            const minLoadingTime = 3000
+
+            if (elapsed < minLoadingTime) {
+                await new Promise(resolve =>
+                    setTimeout(resolve, minLoadingTime - elapsed)
+                )
+            }
+
             set({
                 apodData: data,
                 isLoading: false,

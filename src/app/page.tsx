@@ -8,6 +8,7 @@ import LoadingScreen from '@/components/screens/Loading'
 import GreetingScreen from '@/components/screens/Greeting'
 import HowToScreen from '@/components/screens/HowTo'
 import DatePickScreen from '@/components/screens/DatePick'
+import FinalScreen from '@/components/screens/Final'
 
 export default function HomePage() {
     const selectedScreen = useGlobalStore(store => store.selectedScreen)
@@ -71,6 +72,9 @@ export default function HomePage() {
                                     )}
                                     {selectedScreen === 'datePick' && (
                                         <DatePickScreen />
+                                    )}
+                                    {selectedScreen === 'final' && (
+                                        <FinalScreen />
                                     )}
                                 </motion.div>
                             )}
