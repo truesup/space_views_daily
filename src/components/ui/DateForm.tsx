@@ -11,6 +11,7 @@ export default function DateForm() {
 
     const [date, setDate] = useState({ day: '', month: '', year: '' })
     const [isValid, setIsValid] = useState<boolean | null>(null)
+    const [isDisabled, setIsDisabled] = useState<boolean>(false)
     const [isContentShown, setIsContentShown] = useState<boolean>(false)
 
     const formRef = useRef<HTMLFormElement>(null)
@@ -45,7 +46,9 @@ export default function DateForm() {
             setIsValid(valid)
             ;(document.activeElement as HTMLElement)?.blur()
 
-            if (!valid) {
+            if (valid) {
+                setIsDisabled(true)
+            } else {
                 setDate({ day: '', month: '', year: '' })
                 setTimeout(() => dayRef.current?.focus(), 400)
             }
@@ -76,6 +79,7 @@ export default function DateForm() {
                         value={date.day}
                         onChange={e => handleChange('day', e.target.value)}
                         onFilled={() => monthRef.current?.focus()}
+                        disabled={isDisabled}
                     />
                     <span>/</span>
                     <DateInput
@@ -84,6 +88,7 @@ export default function DateForm() {
                         value={date.month}
                         onChange={e => handleChange('month', e.target.value)}
                         onFilled={() => yearRef.current?.focus()}
+                        disabled={isDisabled}
                     />
                     <span>/</span>
                     <DateInput
@@ -91,6 +96,7 @@ export default function DateForm() {
                         ref={yearRef}
                         value={date.year}
                         onChange={e => handleChange('year', e.target.value)}
+                        disabled={isDisabled}
                     />
                 </motion.div>
 
