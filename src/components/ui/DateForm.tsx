@@ -2,8 +2,11 @@ import { ChevronDown } from 'lucide-react'
 import { LayoutGroup, motion } from 'framer-motion'
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { useGlobalStore } from '@/zustand/store'
-import { validateDate } from '@/lib/utils/validateDate'
-import { sanitizeDate } from '@/lib/utils/sanitizeDate'
+import {
+    validateDate,
+    sanitizeDate,
+    DateObject,
+} from '@/lib/utils/dateFunctions'
 import DateInput from '@/components/ui/DateInput'
 import ChevronButton from '@/components/ui/ChevronButton'
 
@@ -11,7 +14,11 @@ export default function DateForm() {
     const setSelectedDate = useGlobalStore(store => store.setSelectedDate)
     const fetchAPODData = useGlobalStore(store => store.fetchAPODData)
 
-    const [date, setDate] = useState({ day: '', month: '', year: '' })
+    const [date, setDate] = useState<DateObject>({
+        day: '',
+        month: '',
+        year: '',
+    })
     const [isValid, setIsValid] = useState<boolean | null>(null)
     const [isDisabled, setIsDisabled] = useState<boolean>(false)
     const [isContentShown, setIsContentShown] = useState<boolean>(false)
@@ -43,7 +50,7 @@ export default function DateForm() {
             date.year.length === 4
 
         if (isComplete) {
-            const valid = validateDate(date.day, date.month, date.year)
+            const valid = validateDate(date)
             setIsValid(valid)
             ;(document.activeElement as HTMLElement)?.blur()
 
@@ -108,7 +115,11 @@ export default function DateForm() {
                         layout
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 1, ease: 'easeInOut' }}
+                        transition={{
+                            duration: 1,
+                            ease: 'easeInOut',
+                            delay: 1,
+                        }}
                     >
                         <ChevronButton
                             type="submit"
