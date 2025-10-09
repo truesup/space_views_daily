@@ -8,7 +8,8 @@ import DateInput from '@/components/ui/DateInput'
 import ChevronButton from '@/components/ui/ChevronButton'
 
 export default function DateForm() {
-    const goToNextScreen = useGlobalStore(store => store.goToNext)
+    const setSelectedDate = useGlobalStore(store => store.setSelectedDate)
+    const fetchAPODData = useGlobalStore(store => store.fetchAPODData)
 
     const [date, setDate] = useState({ day: '', month: '', year: '' })
     const [isValid, setIsValid] = useState<boolean | null>(null)
@@ -25,10 +26,9 @@ export default function DateForm() {
         setDate(prev => ({ ...prev, [field]: numericValue }))
     }
 
-    const handleDateSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleDateSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log('дата:', sanitizeDate(date))
-        // goToNextScreen()
+        await fetchAPODData()
     }
 
     useEffect(() => {
@@ -49,6 +49,8 @@ export default function DateForm() {
 
             if (valid) {
                 setIsDisabled(true)
+                const dateString = sanitizeDate(date)
+                setSelectedDate(dateString)
             } else {
                 setDate({ day: '', month: '', year: '' })
                 setTimeout(() => dayRef.current?.focus(), 400)

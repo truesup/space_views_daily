@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { APODResponse, fetchAPOD } from '@/lib/api/apod'
 
 const navigationScreens = ['greeting', 'howTo', 'datePick', 'final'] as const
 type Screen = (typeof navigationScreens)[number]
@@ -8,6 +9,11 @@ interface GlobalState {
     isLoading: boolean
     goToNext: () => void
     goToPrev: () => void
+    selectedDate: string | null
+    setSelectedDate: (date: string) => void
+    apodData: APODResponse | null
+    error: string | null
+    fetchAPODData: () => Promise<void>
 }
 
 export const useGlobalStore = create<GlobalState>((set, get) => ({
@@ -40,6 +46,36 @@ export const useGlobalStore = create<GlobalState>((set, get) => ({
                     selectedScreen: navigationScreens[currentIndex - 1],
                 })
             }, 1200)
+        }
+    },
+
+    selectedDate: null,
+
+    setSelectedDate: (date: string) => set({ selectedDate: date }),
+
+    apodData: null,
+
+    error: null,
+
+    fetchAPODData: async () => {
+        const { selectedDate } = get()
+
+        if (!selectedDate) return
+
+        set({ isLoading: true, error: null })
+
+        try {
+            const data = await fetchAPOD(selectedDate)
+            set({
+                apodData: data,
+                isLoading: false,
+                selectedScreen: 'final',
+            })
+        } catch (error) {
+            set({
+                error: error instanceof Error ? error.message : 'Unknown error',
+                isLoading: false,
+            })
         }
     },
 }))
