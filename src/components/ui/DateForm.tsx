@@ -2,7 +2,8 @@ import { ChevronDown } from 'lucide-react'
 import { LayoutGroup, motion } from 'framer-motion'
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { useGlobalStore } from '@/zustand/store'
-import { validateDate } from '@/lib/validateDate'
+import { validateDate } from '@/lib/utils/validateDate'
+import { sanitizeDate } from '@/lib/utils/sanitizeDate'
 import DateInput from '@/components/ui/DateInput'
 import ChevronButton from '@/components/ui/ChevronButton'
 
@@ -26,7 +27,7 @@ export default function DateForm() {
 
     const handleDateSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log('дата:', `${date.day}/${date.month}/${date.year}`)
+        console.log('дата:', sanitizeDate(date))
         // goToNextScreen()
     }
 

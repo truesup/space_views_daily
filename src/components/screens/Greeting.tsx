@@ -3,7 +3,7 @@ import { useGlobalStore } from '@/zustand/store'
 import DecryptedText from '@/components/ui/DecryptedText'
 import ChevronButton from '@/components/ui/ChevronButton'
 
-export default function GreetingScren() {
+export default function GreetingScreen() {
     const goToNextScreen = useGlobalStore(store => store.goToNext)
 
     return (
