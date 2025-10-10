@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useGlobalStore } from '@/zustand/store'
 import ExplanationItemsBlock from '@/components/ui/ExplanationItemsBlock'
-import ChevronButton from '@/components/ui/ChevronButton'
+import ChevronButton from '@/components/ui/IconButton'
 
 export default function HowToScreen() {
     const goToNextScreen = useGlobalStore(store => store.goToNext)

@@ -1,5 +1,6 @@
-import Image from 'next/image'
+import { Undo2, FileText, Maximize } from 'lucide-react'
 import { useGlobalStore } from '@/zustand/store'
+import IconButton from '@/components/ui/IconButton'
 
 export default function FinalScreen() {
     const goToPrevScreen = useGlobalStore(store => store.goToPrev)
@@ -25,38 +26,24 @@ export default function FinalScreen() {
     }
 
     return (
-        <div className="flex items-center justify-center gap-5">
-            <div>
-                <h2>{apodData.title}</h2>
-                <p>{apodData.explanation}</p>
+        <div className="flex flex-col items-center justify-center gap-8">
+            <h2 className="w-full text-center font-major shadow-text-stroke text-[58px] leading-[1]">
+                {apodData.title}
+            </h2>
+
+            <div className="border border-white w-3/4 h-[400px] relative">
+                <p className="absolute bottom-[8px] right-[16px] font-raleway text-[12px] text-white">
+                    © {apodData.copyright}
+                </p>
             </div>
 
-            <div></div>
+            <div className="w-3/4 flex items-center justify-between">
+                <IconButton icon={Undo2} title="Go back to date selection" />
+                <div className="flex items-center justify-center gap-5">
+                    <IconButton icon={Maximize} title="Open in HD rezolution" />
+                    <IconButton icon={FileText} title="Read explanation" />
+                </div>
+            </div>
         </div>
     )
 }
-
-// {
-//     apodData.media_type === 'image' ? (
-//         <div className="relative w-full max-w-1/2 h-3/4 aspect-video">
-//             <Image
-//                 src={apodData.hdurl || apodData.url}
-//                 alt={apodData.title}
-//                 fill
-//                 className="object-fill border border-white"
-//                 sizes=""
-//                 priority
-//             />
-//         </div>
-//     ) : (
-//         <div className="w-full max-w-1/2 max-h-3/4 aspect-video">
-//             <iframe
-//                 src={apodData.url}
-//                 title={apodData.title}
-//                 className="w-full h-full"
-//                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//                 allowFullScreen
-//             />
-//         </div>
-//     )
-// }

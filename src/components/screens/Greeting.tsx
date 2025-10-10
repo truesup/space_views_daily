@@ -1,7 +1,7 @@
 import { ChevronRight } from 'lucide-react'
 import { useGlobalStore } from '@/zustand/store'
 import DecryptedText from '@/components/ui/DecryptedText'
-import ChevronButton from '@/components/ui/ChevronButton'
+import ChevronButton from '@/components/ui/IconButton'
 
 export default function GreetingScreen() {
     const goToNextScreen = useGlobalStore(store => store.goToNext)

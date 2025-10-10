@@ -8,7 +8,7 @@ import {
     DateObject,
 } from '@/lib/utils/dateFunctions'
 import DateInput from '@/components/ui/DateInput'
-import ChevronButton from '@/components/ui/ChevronButton'
+import ChevronButton from '@/components/ui/IconButton'
 
 export default function DateForm() {
     const setSelectedDate = useGlobalStore(store => store.setSelectedDate)
