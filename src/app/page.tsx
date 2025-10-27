@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useGlobalStore } from '@/zustand/store'
 import { useState, useEffect } from 'react'
 import ParticlesBackground from '@/components/ui/ParticlesBackground'
-import LoadingScreen from '@/components/screens/Loading'
+import LoadingScreen from '@/components/ui/Loader'
 import GreetingScreen from '@/components/screens/Greeting'
 import HowToScreen from '@/components/screens/HowTo'
 import DatePickScreen from '@/components/screens/DatePick'
@@ -47,7 +47,7 @@ export default function HomePage() {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{
-                                        duration: 2,
+                                        duration: 1.2,
                                         ease: 'easeInOut',
                                     }}
                                 >

@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
         )
 
         if (!response.ok) {
-            throw new Error(`NASA API returned ${response.status}`)
+            console.error(`NASA API returned ${response.status}`)
         }
 
         const data = await response.json()
